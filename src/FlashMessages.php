@@ -21,13 +21,13 @@ trait FlashMessages
      */
     protected static function message($level = 'info', $message = null, $title = false, $dismissable = false, $actions = false, $bag = 'default')
     {
-        if (session()->has('messages.'.$bag)) {
-            $messages = session()->pull('messages.'.$bag);
+        if (session()->has('messages-'.$bag)) {
+            $messages = session()->pull('messages-'.$bag);
         }
 
         $messages[] = $message = ['level' => $level, 'message' => $message, 'dismissable' => $dismissable, 'title' => $title, 'actions' => $actions];
 
-        session()->flash('messages.'.$bag, $messages);
+        session()->flash('messages-'.$bag, $messages);
 
         return $message;
     }
@@ -39,7 +39,7 @@ trait FlashMessages
      */
     protected static function messages($bag = 'default')
     {
-        return self::hasMessages() ? session()->pull('messages.'.$bag) : [];
+        return self::hasMessages() ? session()->pull('messages-'.$bag) : [];
     }
 
     /**
@@ -49,7 +49,7 @@ trait FlashMessages
      */
     protected static function hasMessages($bag = 'default')
     {
-        return session()->has('messages.'.$bag);
+        return session()->has('messages-'.$bag);
     }
 
     /**
