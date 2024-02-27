@@ -39,7 +39,7 @@ trait FlashMessages
      */
     protected static function messages($bag = 'messages')
     {
-        return self::hasMessages() ? session()->pull($bag) : [];
+        return self::hasMessages($bag) ? session()->pull($bag) : [];
     }
 
     /**
