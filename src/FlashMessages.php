@@ -19,15 +19,15 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function message($level = 'info', $message = null, $title = false, $dismissable = false, $actions = false, $bag = 'default')
+    protected static function message($level = 'info', $message = null, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
-        if (session()->has('messages')) {
-            $messages = session()->pull('messages');
+        if (session()->has($bag)) {
+            $messages = session()->pull($bag);
         }
 
         $messages[] = $message = ['level' => $level, 'message' => $message, 'dismissable' => $dismissable, 'title' => $title, 'actions' => $actions];
 
-        session()->flash('messages', $messages);
+        session()->flash($bag, $messages);
 
         return $message;
     }
@@ -37,9 +37,9 @@ trait FlashMessages
      *
      * @return array
      */
-    protected static function messages($bag = 'default')
+    protected static function messages($bag = 'messages')
     {
-        return self::hasMessages() ? session()->pull('messages') : [];
+        return self::hasMessages() ? session()->pull($bag) : [];
     }
 
     /**
@@ -47,9 +47,9 @@ trait FlashMessages
      *
      * @return bool
      */
-    protected static function hasMessages($bag = 'default')
+    protected static function hasMessages($bag = 'messages')
     {
-        return session()->has('messages');
+        return session()->has($bag);
     }
 
     /**
@@ -60,7 +60,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function success($message, $title = false, $dismissable = false, $actions = false, $bag = 'default')
+    protected static function success($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('success', $message, $title, $dismissable, $actions, $bag);
     }
@@ -73,7 +73,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function info($message, $title = false, $dismissable = false, $actions = false, $bag = 'default')
+    protected static function info($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('info', $message, $title, $dismissable, $actions, $bag);
     }
@@ -86,7 +86,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function warning($message, $title = false, $dismissable = false, $actions = false, $bag = 'default')
+    protected static function warning($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('warning', $message, $title, $dismissable, $actions, $bag);
     }
@@ -99,7 +99,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function danger($message, $title = false, $dismissable = false, $actions = false, $bag = 'default')
+    protected static function danger($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('danger', $message, $title, $dismissable, $actions, $bag);
     }
