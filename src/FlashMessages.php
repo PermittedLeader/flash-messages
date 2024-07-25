@@ -37,7 +37,7 @@ trait FlashMessages
      *
      * @return array
      */
-    protected static function messages($bag = 'messages')
+    public static function messages($bag = 'messages')
     {
         return self::hasMessages($bag) ? session()->pull($bag) : [];
     }
@@ -47,7 +47,7 @@ trait FlashMessages
      *
      * @return bool
      */
-    protected static function hasMessages($bag = 'messages')
+    public static function hasMessages($bag = 'messages')
     {
         return session()->has($bag);
     }
@@ -60,7 +60,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function success($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
+    public static function success($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('success', $message, $title, $dismissable, $actions, $bag);
     }
@@ -73,7 +73,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function info($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
+    public static function info($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('info', $message, $title, $dismissable, $actions, $bag);
     }
@@ -86,7 +86,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function warning($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
+    public static function warning($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('warning', $message, $title, $dismissable, $actions, $bag);
     }
@@ -99,7 +99,7 @@ trait FlashMessages
      * @param  bool  $dismissable
      * @return void
      */
-    protected static function danger($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
+    public static function danger($message, $title = false, $dismissable = false, $actions = false, $bag = 'messages')
     {
         return self::message('danger', $message, $title, $dismissable, $actions, $bag);
     }
