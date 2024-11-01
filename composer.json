@@ -15,7 +15,7 @@
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.3"
     },
-    "license": "GNU GPLv3",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
             "Permittedleader\\FlashMessages\\": "src/"
