@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^10.45"
+        "laravel/framework": ">=10.45"
     },
     "require-dev": {
         "orchestra/testbench": "^8.21",
